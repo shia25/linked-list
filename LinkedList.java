@@ -180,6 +180,23 @@ class LinkedList {
         return counterX;
     }
 
+    //Implement the function searchList(x) that returns TRUE if number x is in
+    //the list and FALSE if not. The number x is entered by the user. Modify the main menu to
+    //include this function in the options.
+
+
+    public static boolean searchList(LinkedList list, int x){
+        Node tmp = list.head;
+
+        while(tmp != null){
+            if (tmp.data == x){
+                return true;
+            }
+            // moving to next tmp
+            tmp = tmp.next;
+        }
+        return false;
+    }
 
     public static void main(String[] args)
     {
@@ -201,6 +218,7 @@ class LinkedList {
             System.out.println("4: Print the number of element in the list");
             System.out.println("5: Print the first K elements of the list");
             System.out.println("6: Print number of times x appears in the list");
+            System.out.println("7: Print if the number appears in the list");
 
 
             option=scan.nextInt();
@@ -242,6 +260,19 @@ class LinkedList {
                 int count = countList(list,x);
                 System.out.println("The number " + x + " appears " + count + " times in the list");
             }
+
+            if(option==7){
+                System.out.println("What number do you want to Check?");
+                x=scan.nextInt();
+                // need to make sure the functions type as it has to be returned in the correct function type in this case as boolean
+                boolean found = searchList(list,x);
+                if (found){
+                    System.out.println("The number " + x + " is in the list");
+                }else {
+                    System.out.println("The number " + x + " is not in the list");
+                }
+            }
+
 
             if(option==0)
                 System.out.println("Good bye!");
